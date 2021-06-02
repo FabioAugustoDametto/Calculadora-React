@@ -1,0 +1,8 @@
+.container-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 20px;
+  background-color: hsl(223, 31%, 20%);
+  padding: 30px;
+  border-radius: 10px;
+}

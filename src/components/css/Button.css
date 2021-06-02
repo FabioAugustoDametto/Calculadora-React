@@ -1,0 +1,43 @@
+.button {
+  border-radius: 10px;
+  background-color: hsl(30, 25%, 89%);
+  border-bottom: 5px solid hsl(28, 16%, 65%);
+  color: hsl(221, 14%, 31%);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-size: 34px;
+  height: 60px;
+  padding: 10px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button.equal:active,
+.button.delete:active,
+.button.reset:active,
+.button:active {
+  border-bottom: 2px solid hsl(0deg, 0%, 39%);
+}
+
+.button.delete,
+.button.reset {
+  background-color: hsl(224, 21%, 50%);
+  color: hsl(30, 25%, 89%);
+  border-bottom: 4px solid hsl(222, 26%, 31%);
+  font-size: 20px;
+}
+
+.button.equal {
+  background-color: hsl(6, 63%, 50%);
+  border-bottom: 4px solid hsl(6, 70%, 34%);
+  color: hsl(30, 25%, 89%);
+  font-size: 20px;
+}
+
+.button.reset,
+.button.equal {
+  grid-column: span 2;
+}
