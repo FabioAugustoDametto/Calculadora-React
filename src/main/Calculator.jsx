@@ -1,12 +1,44 @@
 import React, { useState }  from 'react';
 import Display from '../components/Display';
 import Button from '../components/Button';
+import Header from '../components/Header'
 import './Calculator.css'
 
 
 
 const Calculator = () => {
-    
+
+    const [theme, setTheme] = useState(
+        {
+        className: ['Blue','White','Purple'] , 
+        active: [true, false, false],
+        currentClass: 'Blue'            
+        }      
+)
+
+    const changeTheme = (e) => {
+        
+        const active = [false, false, false]
+        active[e] = true
+        const currentClass = active[e] ? theme.className[e] : '' 
+        setTheme({...theme, active, currentClass})                
+        setBackground(currentClass)         
+    }
+
+    const setBackground = (currentClass) => {        
+        switch (currentClass) {
+            case 'Blue': 
+                document.body.style.backgroundColor = "hsl(222, 26%, 31%)"                          
+                break;
+            case 'White': 
+                document.body.style.backgroundColor = "hsl(0, 0%, 90%)"                           
+                break;
+            case 'Purple': 
+                document.body.style.backgroundColor = "hsl(268, 75%, 9%)"                           
+                break;           
+        }       
+    }
+        
 
     const [display, setDisplay] = useState(
         {
@@ -27,9 +59,14 @@ const Calculator = () => {
     }
 
     const handleButtonClick = (digit) => {
-        if (digit === '.' && display.displayValue.includes('.')) {
-            return
-        }           
+        try {
+            if (digit === '.' && display.displayValue.includes('.')) {
+                return
+            } 
+        } catch {
+            
+        }      
+
         const clearDisplay = display.displayValue === '0' || display.clearDisplay              
         const currentValue = clearDisplay ? valueControl(digit) : display.displayValue
         const displayValue = currentValue + digit  
@@ -39,7 +76,45 @@ const Calculator = () => {
         values[i] = NewValue
         setDisplay({...display, displayValue, values, clearDisplay: false})             
     }
- 
+
+    const handleOperation = (operation) => {
+
+        if(display.current === 0) {
+            setDisplay({...display, operation, current: 1, clearDisplay: true})
+        } else {
+            const equals = operation === '='
+            let currentOperation = display.operation
+            if(currentOperation === 'x') currentOperation = '*'
+            const values = {...display.values}
+
+            try {
+                values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
+            } catch(e) {
+                values[0] = display.values[0]                
+            }       
+                 
+            values[1] = 0
+            setDisplay({
+                displayValue: values[0],
+                operation: equals ? null : operation,
+                current: equals ? 0 : 1,
+                clearDisplay: !equals,
+                values
+            })
+        } 
+    }
+
+
+    const deleteNumber = () => {              
+        let displayValue = display.displayValue.toString()
+        displayValue = displayValue.substring(0, displayValue.length - 1)
+        let i = display.current
+        const values = {...display.values}
+        values[i] = displayValue
+        setDisplay({...display, displayValue, values})            
+    }
+
+
     const handleClearDisplay = () => {       
         setDisplay({
             displayValue: '0',
@@ -53,27 +128,30 @@ const Calculator = () => {
     return (
         <>
            <div>
-              <Display display={display}/>
+               <Header changeTheme={changeTheme} theme={theme}/>
+           </div>
+           <div>
+              <Display display={display} theme={theme}/>
             </div>
-           <div className="container-keys">            
-                <Button label="7" click={handleButtonClick}/>
-                <Button label="8" click={handleButtonClick}/>
-                <Button label="9" click={handleButtonClick}/>
-                <Button label="DEL" del="delete"/>
-                <Button label="4" click={handleButtonClick}/>
-                <Button label="5" click={handleButtonClick}/>
-                <Button label="6" click={handleButtonClick}/>
-                <Button label="+"/>
-                <Button label="1" click={handleButtonClick}/>
-                <Button label="2" click={handleButtonClick}/>
-                <Button label="3" click={handleButtonClick}/>
-                <Button label="-"/>
-                <Button label="." click={handleButtonClick}/>
-                <Button label="0" click={handleButtonClick}/>
-                <Button label="/"/>
-                <Button label="x"/>            
-                <Button label="RESET" click={handleClearDisplay} reset="reset" />
-                <Button label="=" equal="equal" />            
+           <div className={`container-keys ${theme.currentClass}`}>            
+                <Button label="7" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="8" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="9" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="DEL" click={deleteNumber} del="delete" theme={theme.currentClass}/>
+                <Button label="4" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="5" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="6" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="+" click={handleOperation} theme={theme.currentClass}/>
+                <Button label="1" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="2" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="3" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="-" click={handleOperation} theme={theme.currentClass}/>
+                <Button label="." click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="0" click={handleButtonClick} theme={theme.currentClass}/>
+                <Button label="/" click={handleOperation} theme={theme.currentClass}/>
+                <Button label="x" click={handleOperation} theme={theme.currentClass}/>            
+                <Button label="RESET" click={handleClearDisplay} reset="reset"  theme={theme.currentClass}/>
+                <Button label="=" equal="equal" click={handleOperation} theme={theme.currentClass}/>            
             </div>        
         </>
     )
@@ -83,3 +161,4 @@ export default Calculator
 
 
 
+    

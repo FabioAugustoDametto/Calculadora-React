@@ -1,0 +1,79 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header.Blue {
+  color: #fff;
+}
+
+.Header.White {
+  color: hsl(60, 10%, 19%);
+}
+
+.Header.Purple {
+  color: hsl(52, 100%, 62%);
+}
+
+.Header-Theme {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.Header-Numbers {
+  letter-spacing: 7px;
+  justify-self: center;
+  font-size: 10px;
+  margin-left: 8px;
+}
+
+.slider {
+  display: flex;
+  border-radius: 50px;
+  width: 70px;
+  padding: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider.Blue,
+.switch.Blue.false:before {
+  background-color: hsl(223, 31%, 20%);
+}
+.slider.White,
+.switch.White.false:before {
+  background-color: hsl(0, 5%, 81%);
+}
+.slider.Purple,
+.switch.Purple.false:before {
+  background-color: hsl(268, 71%, 12%);
+}
+
+.switch:before {
+  content: "";
+  display: block;
+  width: 13px;
+  height: 13px;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  transform: scale(1.3);
+}
+
+.switch.Blue.true:before {
+  background-color: hsl(6, 63%, 50%);
+}
+
+.switch.White.true:before {
+  background-color: hsl(25, 98%, 40%);
+}
+
+.switch.Purple.true:before {
+  background-color: hsl(176, 100%, 44%);
+}

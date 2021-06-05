@@ -1,8 +1,5 @@
 .button {
   border-radius: 10px;
-  background-color: hsl(30, 25%, 89%);
-  border-bottom: 5px solid hsl(28, 16%, 65%);
-  color: hsl(221, 14%, 31%);
   border-top: none;
   border-right: none;
   border-left: none;
@@ -15,6 +12,24 @@
   cursor: pointer;
 }
 
+.button.Blue {
+  background-color: hsl(30, 25%, 89%);
+  border-bottom: 5px solid hsl(28, 16%, 65%);
+  color: hsl(221, 14%, 31%);
+}
+
+.button.White {
+  background-color: hsl(45, 7%, 89%);
+  border-bottom: 5px solid hsl(35, 11%, 61%);
+  color: hsl(60, 10%, 19%);
+}
+
+.button.Purple {
+  background-color: hsl(268, 47%, 21%);
+  border-bottom: 5px solid hsl(290, 70%, 36%);
+  color: hsl(52, 100%, 62%);
+}
+
 .button.equal:active,
 .button.delete:active,
 .button.reset:active,
@@ -23,21 +38,51 @@
 }
 
 .button.delete,
-.button.reset {
-  background-color: hsl(224, 21%, 50%);
-  color: hsl(30, 25%, 89%);
-  border-bottom: 4px solid hsl(222, 26%, 31%);
-  font-size: 20px;
-}
-
+.button.reset,
 .button.equal {
-  background-color: hsl(6, 63%, 50%);
-  border-bottom: 4px solid hsl(6, 70%, 34%);
-  color: hsl(30, 25%, 89%);
   font-size: 20px;
 }
 
 .button.reset,
 .button.equal {
   grid-column: span 2;
+}
+
+.button.Blue.delete,
+.button.Blue.reset {
+  background-color: hsl(224, 21%, 50%);
+  color: hsl(30, 25%, 89%);
+  border-bottom: 4px solid hsl(224, 28%, 35%);
+}
+
+.button.Blue.equal {
+  background-color: hsl(6, 63%, 50%);
+  border-bottom: 4px solid hsl(6, 70%, 34%);
+  color: hsl(30, 25%, 89%);
+}
+
+.button.White.delete,
+.button.White.reset {
+  background-color: hsl(185, 42%, 37%);
+  color: hsl(30, 25%, 89%);
+  border-bottom: 4px solid hsl(185, 58%, 25%);
+}
+
+.button.White.equal {
+  background-color: hsl(25, 98%, 40%);
+  border-bottom: 4px solid hsl(25, 99%, 27%);
+  color: hsl(0, 0%, 100%);
+}
+
+.button.Purple.delete,
+.button.Purple.reset {
+  background-color: hsl(281, 89%, 26%);
+  color: hsl(30, 25%, 89%);
+  border-bottom: 4px solid hsl(285, 91%, 52%);
+}
+
+.button.Purple.equal {
+  background-color: hsl(176, 100%, 44%);
+  border-bottom: 4px solid hsl(177, 92%, 70%);
+  color: hsl(198, 20%, 13%);
 }
