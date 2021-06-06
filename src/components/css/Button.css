@@ -5,7 +5,14 @@
   border-left: none;
   font-size: 34px;
   height: 60px;
-  padding: 10px;
+  padding-top: 10px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 540px) {
+  .button {
+    font-size: 25px;
+    border-radius: 5px;
+  }
 }
 
 .button:hover {
@@ -18,10 +25,42 @@
   color: hsl(221, 14%, 31%);
 }
 
+.button.Blue:active {
+  background-color: hsl(221, 14%, 31%);
+  color: hsl(30, 25%, 89%);
+}
+
+.button.Blue.equal:active {
+  background-color: hsl(30, 25%, 89%);
+  color: hsl(6, 63%, 50%);
+}
+
+.button.Blue.delete:active,
+.button.Blue.reset:active {
+  background-color: hsl(30, 25%, 89%);
+  color: hsl(224, 21%, 50%);
+}
+
 .button.White {
   background-color: hsl(45, 7%, 89%);
   border-bottom: 5px solid hsl(35, 11%, 61%);
   color: hsl(60, 10%, 19%);
+}
+
+.button.White:active {
+  background-color: hsl(60, 10%, 19%);
+  color: hsl(45deg 7% 89%);
+}
+
+.button.White.equal:active {
+  background-color: hsl(30, 25%, 89%);
+  color: hsl(25, 98%, 40%);
+}
+
+.button.White.delete:active,
+.button.White.reset:active {
+  background-color: hsl(30, 25%, 89%);
+  color: hsl(185, 42%, 37%);
 }
 
 .button.Purple {
@@ -30,11 +69,20 @@
   color: hsl(52, 100%, 62%);
 }
 
-.button.equal:active,
-.button.delete:active,
-.button.reset:active,
-.button:active {
-  border-bottom: 2px solid hsl(0deg, 0%, 39%);
+.button.Purple:active {
+  background-color: #ffe53d;
+  color: #341c4f;
+}
+
+.button.Purple.equal:active {
+  background-color: hsl(198, 20%, 13%);
+  color: hsl(176, 100%, 44%);
+}
+
+.button.Purple.delete:active,
+.button.Purple.reset:active {
+  background-color: hsl(30, 25%, 89%);
+  color: hsl(285, 91%, 52%);
 }
 
 .button.delete,

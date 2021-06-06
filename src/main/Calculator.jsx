@@ -16,8 +16,7 @@ const Calculator = () => {
         }      
 )
 
-    const changeTheme = (e) => {
-        
+    const changeTheme = (e) => {        
         const active = [false, false, false]
         active[e] = true
         const currentClass = active[e] ? theme.className[e] : '' 
@@ -105,13 +104,18 @@ const Calculator = () => {
     }
 
 
-    const deleteNumber = () => {              
+    const deleteNumber = () => {   
         let displayValue = display.displayValue.toString()
-        displayValue = displayValue.substring(0, displayValue.length - 1)
-        let i = display.current
-        const values = {...display.values}
-        values[i] = displayValue
-        setDisplay({...display, displayValue, values})            
+        
+        if (displayValue.length > 1) {
+            displayValue = displayValue.substring(0, displayValue.length - 1)
+            let i = display.current
+            const values = {...display.values}
+            values[i] = displayValue
+            setDisplay({...display, displayValue, values})            
+        } else {
+            return
+        }           
     }
 
 
