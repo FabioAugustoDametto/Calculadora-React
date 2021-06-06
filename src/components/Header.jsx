@@ -16,23 +16,25 @@ const Header = ({changeTheme, theme}) => {
            <div className="Header-Theme">                 
                <div></div>
                <div className="Header-Numbers">
-                 <label>1 2 3</label>                 
+                 <label htmlFor="slider1">1</label> 
+                 <label htmlFor="slider2">2</label>                
+                 <label htmlFor="slider3">3</label>
                </div>
                <div>
                  <label>THEME</label>
                </div>
                
                <div className={`slider ${theme.currentClass}`}>
-                   <div>                                           
-                       <input id="0" className={`switch ${theme.currentClass} ${theme.active[0]}`} type="checkbox" defaultChecked={true}
+                   <div>                                                               
+                       <input id="0" name="slider1" className={`switch ${theme.currentClass} ${theme.active[0]}`} type="checkbox" defaultChecked={true}
                          onClick={ e => changeTheme(e.target.id)}/>
                    </div>
                    <div>                       
-                       <input id="1" className={`switch ${theme.currentClass} ${theme.active[1]}`} type="checkbox" defaultChecked={false} 
+                       <input id="1" name="slider2"className={`switch ${theme.currentClass} ${theme.active[1]}`} type="checkbox" defaultChecked={false} 
                        onClick={ e => changeTheme(e.target.id)}/>
                    </div>
                    <div>                      
-                       <input id="2" className={`switch ${theme.currentClass} ${theme.active[2]}`} type="checkbox" defaultChecked={false} 
+                       <input id="2" name="slider3" className={`switch ${theme.currentClass} ${theme.active[2]}`} type="checkbox" defaultChecked={false} 
                        onClick={ e => changeTheme(e.target.id)}/>
                    </div>
                 
