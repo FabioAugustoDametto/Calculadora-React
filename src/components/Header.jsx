@@ -16,16 +16,15 @@ const Header = ({changeTheme, theme}) => {
            <div className="Header-Theme">                 
                <div></div>
                <div className="Header-Numbers">
-                 <label htmlFor="slider1">1</label> 
-                 <label htmlFor="slider2">2</label>                
-                 <label htmlFor="slider3">3</label>
+                 <label>1 2 3</label>                 
                </div>
                <div>
                  <label>THEME</label>
                </div>
                
                <div className={`slider ${theme.currentClass}`}>
-                   <div>                                                               
+                   <div> 
+                       <label htmlFor="">1</label>                                          
                        <input id="0" name="slider1" className={`switch ${theme.currentClass} ${theme.active[0]}`} type="checkbox" defaultChecked={true}
                          onClick={ e => changeTheme(e.target.id)}/>
                    </div>
